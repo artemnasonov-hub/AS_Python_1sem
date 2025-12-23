@@ -4,7 +4,6 @@ if __name__ == "__main__":
 
 
 
-
 K = int(input("Введите номер строки K: "))
 file = open("te.txt", "r", encoding="utf-8")
 lines = file.readlines()
