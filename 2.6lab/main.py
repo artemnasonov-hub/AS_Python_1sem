@@ -8,7 +8,6 @@ pi = 3.14
 #корень из двух примерно - 1.414
 def circle_area(r):
     return pi * r * r
-
 def circle_length(r):
     return 2 * pi * r
 
