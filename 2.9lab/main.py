@@ -20,7 +20,6 @@ for line in lines:
     else:
         row = list(map(int, line.split()))
         matrix.append(row)
-
 if matrix != []:
     matric.append(matrix)
 good_matric = []
