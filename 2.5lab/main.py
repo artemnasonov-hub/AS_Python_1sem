@@ -4,12 +4,15 @@ if __name__ == "__main__":
 
 
 
-def sum_of_digits(n):
-    if n < 10:
-        return n
-    return n % 10 + sum_of_digits(n // 10)
-
-
-# Проверка работы функции
-N = int(input("Введите натуральное число: "))
-print("Сумма цифр:", sum_of_digits(N))
+calls = 0
+def C(m, n):
+    global calls
+    calls += 1
+    if m == 0 or m == n:
+        return 1
+    return C(m, n - 1) + C(m - 1, n - 1)
+n = 100
+for m in range(200):
+    calls = 0
+    print("C(", m, ",", n, ") =", C(m, n))
+    print("Вызовов:", calls)
