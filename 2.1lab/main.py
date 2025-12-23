@@ -11,7 +11,6 @@ print("а) Элементы:")
 for key in first:
     print(key, ":", first[key])
 values = []
-
 for key in first:
     values.append(first[key])
 values.sort(reverse=True)
