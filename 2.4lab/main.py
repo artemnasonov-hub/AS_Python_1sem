@@ -4,63 +4,80 @@ if __name__ == "__main__":
 
 
 
-def merge_lists_with(list1, list2, merge_function=None):
-    if merge_function is None:
-        return list1 + list2
+def filter_items(items, condition=None):
+    if condition is None:
+        return items
     result = []
-    for x, y in zip(list1, list2):
-        result.append(merge_function(x, y))
-    return result
-def extract_digits(strings, digits_only=False):
-    if not digits_only:
-        return strings
-    result = []
-    for text in strings:
-        digits = ""
-        for symbol in text:
-            if symbol.isdigit():
-                digits += symbol
-        result.append(digits)
+    for item in items:
+        if condition(item):
+            result.append(item)
     return result
 
-def filter_even_numbers(*numbers):
+
+
+def merge_and_filter(list1, list2, filter_function=None):
+    merged = []
+    for x in list1:
+        merged.append(x)
+    for x in list2:
+        merged.append(x)
+    if filter_function is None:
+        return merged
+    result = []
+
+    for item in merged:
+        if filter_function(item):
+            result.append(item)
+    return result
+
+
+def common_in_all(*lists):
+    if len(lists) == 0:
+        return []
+    result = []
+
+    for item in lists[0]:
+        found_in_all = True
+
+        for i in range(1, len(lists)):
+            if item not in lists[i]:
+                found_in_all = False
+                break
+
+        if found_in_all and item not in result:
+            result.append(item)
+
+    return result
+
+def find_primes(*numbers):
     result = []
 
     for num in numbers:
-        if num % 2 == 0:
+        if num < 2:
+            continue
+        is_prime = True
+        for i in range(2, num):
+            if num % i == 0:
+                is_prime = False
+                break
+        if is_prime:
             result.append(num)
     return result
 
 
 
-def sorted_positive_numbers(*numbers):
-    positive_numbers = []
+print("а) filter_items")
+print(filter_items([1, 2, 3, 4, 5]))
+print(filter_items([1, 2, 3, 4, 5], condition=lambda x: x > 3))
 
-    for num in numbers:
-        if num > 0:
-            positive_numbers.append(num)
+print("\nб) merge_and_filter")
+print(merge_and_filter([1, 2], [3, 4]))
+print(merge_and_filter([1, 2], [3, 4], filter_function=lambda x: x % 2 == 0))
 
-    positive_numbers.sort(reverse=True)
+print("\nв) common_in_all")
+print(common_in_all([1, 2, 3], [2, 3, 4], [3, 4, 5]))
+print(common_in_all(['яблоко', 'вишня'], ['виноград', 'вишня'], ['вишня', 'дыня']))
 
-    return positive_numbers
-
-
-
-# Проверка работы функций
-
-
-print("а) merge_lists_with")
-print(merge_lists_with([1, 2], [3, 4]))
-print(merge_lists_with([1, 2], [3, 4], merge_function=lambda x, y: x + y))
-
-print("\nб) extract_digits")
-print(extract_digits(['a1b2', 'c3d4']))
-print(extract_digits(['a1b2', 'c3d4'], digits_only=True))
-
-print("\nв) filter_even_numbers")
-print(filter_even_numbers(1, 2, 3, 4, 5, 6))
-print(filter_even_numbers(7, 9, 11))
-
-print("\nг) sorted_positive_numbers")
-print(sorted_positive_numbers(-1, 3, -5, 7, 0))
-print(sorted_positive_numbers(-10, -20))
+print("\nг) find_primes")
+print(find_primes(2, 3, 4, 5, 6, 7))
+print(find_primes(10, 15, 17, 19, 23))
