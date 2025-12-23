@@ -5,7 +5,6 @@ if __name__ == "__main__":
 
 
 
-
 def MtrProd(A, B):
     rows_A = len(A)
     cols_A = len(A[0])
