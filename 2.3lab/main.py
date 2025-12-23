@@ -23,7 +23,7 @@ def MtrProd(A, B):
 
     return result
 
-
+#пример матриц
 A = [
     [5, 2],
     [7, 4] ]
