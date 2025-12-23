@@ -4,60 +4,26 @@ if __name__ == "__main__":
 
 
 
-def find_min_element(matrix):
-    minimum = matrix[0][0]
-    for row in matrix:
-        for element in row:
-            if element < minimum:
-                minimum = element
-    return minimum
+pi = 3.14
+#корень из двух примерно - 1.414
+def circle_area(r):
+    return pi * r * r
 
+def circle_length(r):
+    return 2 * pi * r
 
-def find_max_element(matrix):
-    maximum = matrix[0][0]
+def sector_area(r, angle):
+    return pi * r * r * angle / 360
+def square_perimeter(r):
+    a = (2 * r) / 1.414
+    return 4 * a
 
-    for row in matrix:
-        for element in row:
-            if element > maximum:
-                maximum = element
-    return maximum
+radius = 5
+angle = 90
 
-
-def sum_of_elements(matrix):
-    total_sum = 0
-
-    for row in matrix:
-        for element in row:
-            total_sum += element
-    return total_sum
-
-
-def sum_of_row(matrix, row_number):
-    row_sum = 0
-    for element in matrix[row_number]:
-        row_sum += element
-    return row_sum
-
-
-
-#пример
-matrix = [
-        [5, 7, 8],
-        [9, 6, 4],
-        [-1, 4, 2]
-    ]
-
-min_element = find_min_element(matrix)
-max_element = find_max_element(matrix)
-total_sum = sum_of_elements(matrix)
-second_row_sum = sum_of_row(matrix, 1)
-
-print("Матрица:")
-for row in matrix:
-    print(row)
-
-print("Минимальный элемент:", min_element)
-print("Максимальный элемент:", max_element)
-print("Сумма всех элементов матрицы:", total_sum)
-print("Сумма элементов 2-й строки:", second_row_sum)
+print("Радиус круга:", radius)
+print("Площадь круга:", circle_area(radius))
+print("Длина окружности:", circle_length(radius))
+print("Площадь сектора:", sector_area(radius, angle))
+print("Периметр вписанного квадрата:", square_perimeter(radius))
 
