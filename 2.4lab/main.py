@@ -3,7 +3,6 @@ if __name__ == "__main__":
 
 
 
-
 def filter_items(items, condition=None):
     if condition is None:
         return items
